@@ -12,8 +12,13 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <style>
+       
+    </style>
 
 </head>
 <body>
@@ -35,6 +40,7 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
+
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
@@ -47,7 +53,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">DDAC 18</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -55,9 +61,25 @@
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
+                    <div class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav">
+                            <%if (email == "")
+                                { %>
+                            <li><a role="button" href="#id01" onclick="document.getElementById('id01').style.display='block'" style="width: auto;"><i class="fa fa-sign-in"></i>Login</a></li>
+                            <li><a href="#id02" onclick="document.getElementById('id02').style.display='block'" style="width: auto;"><i class="fa fa-edit"></i>Registration</a></li>
+                            <%}
+                                else
+                                { %>
+                            <li><a href="Logout.aspx"><i class="fa fa-close"></i>Logout</a></li>
+                            <%} %>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
+
         </div>
+
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -66,6 +88,93 @@
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
+        <div id="id01" class="modal">
+
+            <div class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="Content/Images/sa.png" class="avatar" />
+                </div>
+
+                <div class="con">
+                    <label for="uname" class="col-lg-2 control-label"><b>Email</b></label>
+
+                    <input type="text" class="form-control" placeholder="Enter Email" name="uname" required>
+
+                    <label for="psw" class="col-lg-2 control-label"><b>Password</b></label>
+
+                    <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                    &nbsp;
+                    &nbsp;
+
+                    <button class="btn btn-success" type="submit">Login</button>
+
+                </div>
+
+                <div class="con" style="background-color: #f1f1f1; height: 40px;">
+                </div>
+            </div>
+        </div>
+        <div id="id02" class="modal">
+
+            <div class="modal-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <img src="Content/Images/sa.png" class="avatar" />
+                </div>
+
+                <div class="con" style="display: inline-block;">
+                    <div class="col-md-6" style="text-align: left;">
+                        <label for="uname" class="col-lg-2 control-label"><b>Email</b></label>
+
+                        <input type="text" class="form-control" placeholder="Enter Email" name="uname" required>
+
+                        <label for="psw" class="col-lg-2 control-label"><b>Password</b></label>
+
+                        <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+
+                        <label for="psw" class="col-lg-2 control-label"><b>Confirm Password</b></label>
+
+                        <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                    </div>
+                    <div class="col-md-6" style="text-align: left;">
+                        <label for="psw" class="col-lg-2 control-label"><b>Name</b></label>
+
+                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+
+                        <label for="psw" class="col-lg-2 control-label"><b>Company Name</b></label>
+
+                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+
+                        <label for="psw" class="col-lg-2 control-label"><b>Person In Charge</b></label>
+
+                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+                        &nbsp;
+                    &nbsp;
+                    </div>
+
+
+                    <button class="btn btn-success" type="submit">Login</button>
+
+                </div>
+
+                <div class="con" style="background-color: #f1f1f1; height: 40px;">
+                </div>
+            </div>
+        </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+            var modal2 = document.getElementById('id02');
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    modal2.style.display = "none";
+                }
+            }
+        </script>
 
     </form>
 </body>

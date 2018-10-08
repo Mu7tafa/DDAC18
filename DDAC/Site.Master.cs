@@ -9,6 +9,9 @@ namespace DDAC
 {
     public partial class SiteMaster : MasterPage
     {
+        public string email = String.Empty;
+        public string userrole = String.Empty;
+        public string username = String.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
