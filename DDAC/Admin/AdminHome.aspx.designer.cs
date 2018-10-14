@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DDAC.Account {
+namespace DDAC.Admin {
     
     
-    public partial class Login {
+    public partial class AdminHome {
     }
 }

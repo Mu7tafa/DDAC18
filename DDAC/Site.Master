@@ -56,11 +56,37 @@
                     <a class="navbar-brand" runat="server" href="~/">DDAC 18</a>
                 </div>
                 <div class="navbar-collapse collapse">
+                    <% if (userrole.Equals("Customer"))
+                        { %>
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Customer/CustomerHome">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                    <% }
+                        else if (userrole.Equals("Staff"))
+                        { %>
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Staff/StaffHome">Home</a></li>
+                    </ul>
+                    <% }
+                        else if (email.Equals("Admin@ddac.com"))
+                        { %>
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Admin/AdminHome">Home</a></li>
+                        <li><a runat="server" href="~/Admin/AdminStaff">Staff</a></li>
+                        <li><a runat="server" href="~/Admin/AdminShipments">Shipments</a></li>
+                        <li><a runat="server" href="~/Admin/AdminPort">Ports</a></li>
+                    </ul>
+                    <% }
+                        else
+                        { %>
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
+                    <%} %>
                     <div class="nav navbar-nav navbar-right">
                         <ul class="nav navbar-nav">
                             <%if (email == "")
@@ -70,7 +96,8 @@
                             <%}
                                 else
                                 { %>
-                            <li><a href="Logout.aspx"><i class="fa fa-close"></i>Logout</a></li>
+                            <li>
+                                <asp:LinkButton ID="Logout" OnClick="Logout_Click" runat="server"><i class="fa fa-close"></i>Logout</asp:LinkButton></li>
                             <%} %>
                         </ul>
                     </div>
@@ -85,7 +112,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - DDAC Assignment</p>
             </footer>
         </div>
         <div id="id01" class="modal">
@@ -96,18 +123,21 @@
                     <img src="Content/Images/sa.png" class="avatar" />
                 </div>
 
-                <div class="con">
+                <div class="con" style="margin-top: 30px;">
                     <label for="uname" class="col-lg-2 control-label"><b>Email</b></label>
-
-                    <input type="text" class="form-control" placeholder="Enter Email" name="uname" required>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" id="lemail" runat="server" class="form-control" placeholder="Enter Email" name="uname">
+                    </div>
 
                     <label for="psw" class="col-lg-2 control-label"><b>Password</b></label>
-
-                    <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicons-lock"></i></span>
+                        <input type="password" id="lpassword" runat="server" class="form-control" placeholder="Enter Password" name="psw">
+                    </div>
                     &nbsp;
                     &nbsp;
-
-                    <button class="btn btn-success" type="submit">Login</button>
+                    <asp:Button ID="Log" CssClass="btn btn-success" runat="server" Text="Login" OnClick="Login_Click" />
 
                 </div>
 
@@ -123,38 +153,36 @@
                     <img src="Content/Images/sa.png" class="avatar" />
                 </div>
 
-                <div class="con" style="display: inline-block;">
+                <div class="con" style="display: inline-block; margin-top: 30px;">
                     <div class="col-md-6" style="text-align: left;">
                         <label for="uname" class="col-lg-2 control-label"><b>Email</b></label>
 
-                        <input type="text" class="form-control" placeholder="Enter Email" name="uname" required>
+                        <input type="text" runat="server" id="remail" class="form-control" placeholder="Enter Email" name="uname">
 
                         <label for="psw" class="col-lg-2 control-label"><b>Password</b></label>
 
-                        <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                        <input type="password" runat="server" id="rpassword" class="form-control" placeholder="Enter Password" name="psw">
 
                         <label for="psw" class="col-lg-2 control-label"><b>Confirm Password</b></label>
 
-                        <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+                        <input type="password" id="rpassword2" runat="server" class="form-control" placeholder="Enter Password" name="psw">
                     </div>
                     <div class="col-md-6" style="text-align: left;">
                         <label for="psw" class="col-lg-2 control-label"><b>Name</b></label>
 
-                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+                        <input type="text" class="form-control" runat="server" id="rname" placeholder="Enter Name" name="psw">
 
                         <label for="psw" class="col-lg-2 control-label"><b>Company Name</b></label>
 
-                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+                        <input type="text" class="form-control" runat="server" id="rcompanyname" placeholder="Enter Name" name="psw">
 
                         <label for="psw" class="col-lg-2 control-label"><b>Person In Charge</b></label>
 
-                        <input type="password" class="form-control" placeholder="Enter Name" name="psw" required>
+                        <input type="text" class="form-control" runat="server" id="rperson" placeholder="Enter Name" name="psw">
                         &nbsp;
                     &nbsp;
                     </div>
-
-
-                    <button class="btn btn-success" type="submit">Login</button>
+                    <asp:Button ID="Reg" CssClass="btn btn-success" runat="server" Text="Register" OnClick="Register_Click" />
 
                 </div>
 
