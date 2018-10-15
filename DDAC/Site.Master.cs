@@ -122,8 +122,10 @@ namespace DDAC
         }
         protected void Logout_Click(object sender, EventArgs e)
         {
-            email = String.Empty;
+            email = "";
+            userrole = "";
             Session["Userses"] = null;
+            Session["Admins"] = null;
             Response.Redirect("~/Default.aspx");
         }
     }

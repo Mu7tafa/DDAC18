@@ -78,6 +78,25 @@ namespace DDAC.Staff
                 Response.Write("ErrorL  " + ex.ToString());
             }
         }
+        protected void Decline(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                SqlConnection con = DB_helper.GetConnection();
+                con.Open();
+                string query = "UPDATE Shipment SET statusAP = @ap WHERE shipID = @id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@id", e.CommandArgument.ToString());
+                cmd.Parameters.AddWithValue("@ap", "Declined");
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Redirect("StaffHome.aspx");
+            }
+            catch (Exception ex)
+            {
+                Response.Write("ErrorL  " + ex.ToString());
+            }
+        }
         protected void Confirm(object sender, CommandEventArgs e)
         {
             try

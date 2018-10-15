@@ -61,7 +61,7 @@
                 <label for="uname" class="col-lg-2 control-label"><b>Email</b></label>
                 <input class="form-control"  runat="server" type="text" id="email">
                 <label for="uname" class="col-lg-2 control-label"><b>Password</b></label>
-                <input class="form-control"  runat="server" type="text" id="password">
+                <input class="form-control"  runat="server" type="password" id="password">
 
                 <label for="uname" class="col-lg-2 control-label"><b>Port</b></label>
                 <asp:DropDownList ID="portdp" runat="server" CssClass="form-control dp" AppendDataBoundItems="true">

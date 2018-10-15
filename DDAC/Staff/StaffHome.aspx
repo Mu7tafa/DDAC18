@@ -23,9 +23,10 @@
                             <tr>
                                 <th>#</th>
                                 <th>Date</th>
-                                <th>Departure Port</th>
-                                <th>Arrival Port</th>
+                                <th>Description</th>
+                                <th>Arrival Port ID</th>
                                 <th>Approve</th>
+                                <th>Decline</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,10 +36,12 @@
                     <tr>
                         <td><%#Container.ItemIndex+1 %></td>
                         <td><%# Eval("date") %></td>
-                        <td><%# Eval("depPID") %></td>
+                        <td><%# Eval("details") %></td>
                         <th><%# Eval("arPID") %></th>
                         <td>
-                            <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" runat="server" OnCommand="Approve"  CommandArgument='<%#Eval("shipID")%>'>Approve</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" runat="server" CssClass="btn btn-success" OnCommand="Approve"  CommandArgument='<%#Eval("shipID")%>'>Approve</asp:LinkButton></td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton1" CommandName="GetAContact" runat="server" CssClass="btn btn-danger" OnCommand="Decline"  CommandArgument='<%#Eval("shipID")%>'>Decline</asp:LinkButton></td>
                     </tr>
 
                 </ItemTemplate>

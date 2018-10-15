@@ -57,7 +57,7 @@ namespace DDAC.Admin
                 cmd2.ExecuteNonQuery();
                 con.Close();
                 
-                Response.Redirect("AdminStaff.aspx");
+                Response.Redirect("Admin/AdminStaff.aspx");
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace DDAC.Admin
                     cmd.Parameters.AddWithValue("@Email", email.Value);
 
                     cmd.ExecuteNonQuery();
-                    Response.Redirect("~/AdminStaff.aspx");
+                    Response.Redirect("~/Admin/AdminStaff.aspx");
 
                 }
                 catch (Exception ex)

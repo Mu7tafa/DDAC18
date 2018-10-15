@@ -43,8 +43,8 @@
                         <td><%# Eval("statusAP") %></td>
                         <th><%# Eval("details") %></th>
                         <td>
-                            <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" Visible='<%# Eval("statusAP").ToString() != "Approved" %>' 
-                                runat="server" OnCommand="Resubmit" CommandArgument='<%#Eval("shipID")%>'>Resubmit</asp:LinkButton>
+                           <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" Visible='<%# Eval("statusAP").ToString() != "Approved" %>' 
+                                runat="server" OnCommand="Resubmit" CommandArgument='<%#Eval("shipID")%>'>Resubmit</asp:LinkButton> 
                         </td>
                     </tr>
 
