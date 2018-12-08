@@ -44,8 +44,8 @@ namespace DDAC.Staff
         {
             SqlConnection con = DB_helper.GetConnection();
             con.Open();
-            String query = "SELECT * FROM Shipment WHERE arPID = '" + portID + "' AND statusAP = 'Approved' AND statusAR != 'Delivered'";
-            String cquery = "SELECT * FROM Shipment WHERE depPID = '"+ portID +"' AND statusAP != 'Approved'";
+            String query = "SELECT * FROM Shipment, Port WHERE pid = depPID AND arPID = '" + portID + "' AND statusAP = 'Approved' AND statusAR != 'Delivered'";
+            String cquery = "SELECT * FROM Shipment, Port WHERE pid = arPID AND depPID = '"+ portID +"' AND statusAP != 'Approved'";
             SqlCommand ccmd = new SqlCommand(cquery, con);
             CRepeater.DataSource = ccmd.ExecuteReader();
             CRepeater.DataBind();

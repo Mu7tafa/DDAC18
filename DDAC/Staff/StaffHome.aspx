@@ -24,7 +24,7 @@
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Description</th>
-                                <th>Arrival Port ID</th>
+                                <th>Arrival Port</th>
                                 <th>Approve</th>
                                 <th>Decline</th>
                             </tr>
@@ -37,7 +37,7 @@
                         <td><%#Container.ItemIndex+1 %></td>
                         <td><%# Eval("date") %></td>
                         <td><%# Eval("details") %></td>
-                        <th><%# Eval("arPID") %></th>
+                        <th><%# Eval("name") %></th>
                         <td>
                             <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" runat="server" CssClass="btn btn-success" OnCommand="Approve"  CommandArgument='<%#Eval("shipID")%>'>Approve</asp:LinkButton></td>
                         <td>
@@ -68,7 +68,7 @@
                                 <th>#</th>
                                 <th>Date</th>
                                 <th>Departure Port</th>
-                                <th>Arrival Port</th>
+                                <th>Description</th>
                                 <th>Confirm</th>
                             </tr>
                         </thead>
@@ -79,10 +79,10 @@
                     <tr>
                         <td><%#Container.ItemIndex+1 %></td>
                         <td><%# Eval("date") %></td>
-                        <td><%# Eval("depPID") %></td>
-                        <th><%# Eval("arPID") %></th>
+                        <td><%# Eval("name") %></td>
+                        <td><%# Eval("details") %></td>
                         <td>
-                            <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" runat="server" OnCommand="Confirm"  CommandArgument='<%#Eval("shipID")%>'>Arrived</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton3" CommandName="GetAContact" runat="server" CssClass="btn btn-success" OnCommand="Confirm"  CommandArgument='<%#Eval("shipID")%>'>Arrived</asp:LinkButton></td>
                     </tr>
 
                 </ItemTemplate>
